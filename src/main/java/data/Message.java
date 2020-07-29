@@ -18,5 +18,7 @@ public class Message implements Serializable {
 
     private String message;                             //消息
 
-    private MessageType messageType;                                   //消息类型
+    private MessageType messageType;                    //消息类型
+
+    private Topic topic;                                // topic
 }

@@ -33,7 +33,7 @@ public class Server {
 
     private ResponseProcessor responseProcessor;
 
-    public Server(int port,RequestProcessor requestProcessor,ResponseProcessor responseProcessor) throws IOException {
+    public Server(int port, RequestProcessor requestProcessor, ResponseProcessor responseProcessor) throws IOException {
         this.requestProcessor = requestProcessor;
         this.responseProcessor = responseProcessor;
         init(port);
