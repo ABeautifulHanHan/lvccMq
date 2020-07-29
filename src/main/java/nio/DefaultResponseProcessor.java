@@ -6,6 +6,10 @@
  */
 package nio;
 
+import common.Config;
+import data.Message;
+import utils.SerializeUtils;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -19,7 +23,7 @@ import java.util.concurrent.Executors;
  */
 public class DefaultResponseProcessor implements ResponseProcessor {
 
-    private static ExecutorService executorService = Executors.newFixedThreadPool(100);
+    private static ExecutorService executorService = Executors.newFixedThreadPool(3);
 
     @Override
     public void processorResponse(SelectionKey key) {
@@ -31,17 +35,18 @@ public class DefaultResponseProcessor implements ResponseProcessor {
         SocketChannel writeChannel = null;
         try {
             writeChannel = (SocketChannel) key.channel();
-            ByteArrayOutputStream attachment = (ByteArrayOutputStream)key.attachment();
+            ByteArrayOutputStream attachment = (ByteArrayOutputStream) key.attachment();
+            String receivedMsg = new String(attachment.toByteArray(), Config.DEFAULT_CHAR_SETS);
+            Message msg = (Message) SerializeUtils.serializeToObject(receivedMsg);
+            System.out.println("线程" + Thread.currentThread().getId() + ":服务器收到：" + msg);
+            String responseMeg = msg.getId() + "ACK";
             ByteBuffer buffer = ByteBuffer.allocate(1024);
-            System.out.println("服务器收到：" + new String(attachment.toByteArray()));
-            String message = new String(attachment.toByteArray()) + "ACK";
-            buffer.put(message.getBytes());
+            buffer.put(responseMeg.getBytes(Config.DEFAULT_CHAR_SETS));
             buffer.flip();
             writeChannel.write(buffer);
-
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 writeChannel.close();
             } catch (IOException e) {
