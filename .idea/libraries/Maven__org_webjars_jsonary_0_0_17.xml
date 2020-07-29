@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.webjars:jsonary:0.0.17">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/jsonary/0.0.17/jsonary-0.0.17.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/jsonary/0.0.17/jsonary-0.0.17-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/jsonary/0.0.17/jsonary-0.0.17-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
