@@ -23,6 +23,10 @@ public class MessageQueue implements Serializable {
         queue = new ConcurrentLinkedDeque<>();
     }
 
+    /**
+     * 放在队列头部
+     * @param value
+     */
     public void putAtHeader(Message value) {
         queue.addFirst(value);
     }

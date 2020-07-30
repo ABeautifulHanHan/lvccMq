@@ -6,24 +6,21 @@
  */
 package nio;
 
+import common.Common;
 import utils.BufferUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author lvcc
  */
 public class DefaultRequestProcessor implements RequestProcessor {
 
-    private static ExecutorService executorService = Executors.newFixedThreadPool(100);
-
     @Override
     public void processorRequest(final SelectionKey key, final Server server) {
-        executorService.submit(() -> readBuffer(key, server));
+        Common.executorService.submit(() -> readBuffer(key, server));
     }
 
     private void readBuffer(SelectionKey key, Server server) {

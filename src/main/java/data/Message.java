@@ -1,6 +1,5 @@
 package data;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,16 +8,32 @@ import java.io.Serializable;
  * @author lvcc
  */
 @Data
-@AllArgsConstructor
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int id;                                    //消息序号
+    //消息序号
+    public int id;
 
-    private String message;                             //消息
+    //消息
+    public String message;
 
-    private MessageType messageType;                    //消息类型
+    //消息类型
+    public MessageType messageType;
 
-    private Topic topic;                                // topic
+    // topic
+    public Topic topic;
+
+    public Message(int id, String message, MessageType messageType) {
+        this.id = id;
+        this.message = message;
+        this.messageType = messageType;
+    }
+
+    public Message(int id, String message, MessageType messageType, Topic topic) {
+        this.id = id;
+        this.message = message;
+        this.messageType = messageType;
+        this.topic = topic;
+    }
 }

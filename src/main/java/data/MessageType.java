@@ -10,6 +10,12 @@ public enum MessageType {
     REGISTER_TOPIC(1, "register_topic"),
 
     PUBLISH_MESSAGE(2, "publish_message"),
+
+    REPLY_EXPECTED(3, "reply_expect"),
+
+    PULL_MESSAGE(4, "pull_message"),
+
+    REQUEST_QUEUE(5, "request_queue")
     ;
 
     private int value;
@@ -28,7 +34,7 @@ public enum MessageType {
             }
         }
 
-        throw new IllegalArgumentException("Invalid AmazeFeedbackSourceType value: " + value);
+        throw new IllegalArgumentException("Invalid MessageType value: " + value);
     }
 
     public static Optional<MessageType> findByString(String name) throws IllegalArgumentException {

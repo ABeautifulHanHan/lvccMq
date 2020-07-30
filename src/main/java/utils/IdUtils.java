@@ -1,5 +1,8 @@
 package utils;
 
+/**
+ * @author lvcc
+ */
 public class IdUtils {
 
     private static int increaseId = 0;
